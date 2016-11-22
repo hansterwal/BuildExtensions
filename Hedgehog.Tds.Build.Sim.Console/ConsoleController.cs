@@ -15,17 +15,6 @@ namespace Hedgehog.Tds.Build.Sim.Console
         public void Start(string replaceHere, List<Step> steps)
         {
             System.Console.WriteLine("SIM: Operation Started : " + replaceHere);
-            foreach (var step in steps)
-            {
-                System.Console.WriteLine("step: " + step.ArgsName);
-                var builder = new StringBuilder();
-                foreach (var processor in step.Processors)
-                {
-                    builder.AppendLine("processor:" + processor.Title );
-                }
-                System.Console.WriteLine(builder.ToString());
-
-            }
         }
 
         public void SetProgress(long progress)
