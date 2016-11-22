@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using SIM.Pipelines;
 
 namespace Hedgehog.Tds.Build.Sim.Console
 {
-    public class ConsoleController: IPipelineController
+    public class ConsoleController : IPipelineController
     {
-
-       
         public void Start(string replaceHere, List<Step> steps)
         {
             System.Console.WriteLine("SIM: Operation Started : " + replaceHere);
@@ -23,7 +18,6 @@ namespace Hedgehog.Tds.Build.Sim.Console
 
         public void IncrementProgress(long progress)
         {
-
         }
 
         public void Finish(string message, bool closeInterface)
@@ -82,7 +76,6 @@ namespace Hedgehog.Tds.Build.Sim.Console
 
         public void Resume()
         {
-            
         }
 
         public string Select(string message, IEnumerable<string> options, bool allowMultipleSelection,
@@ -94,6 +87,4 @@ namespace Hedgehog.Tds.Build.Sim.Console
 
         #endregion
     }
-    
 }
-
