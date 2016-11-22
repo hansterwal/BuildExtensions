@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+
 using SIM.Instances;
 using SIM.Pipelines;
 
@@ -27,10 +25,12 @@ namespace Hedgehog.Tds.Build.Sim.Console
                     return true;
                 }
 
-                SIM.Pipelines.Delete.DeleteArgs deleteArgs = new SIM.Pipelines.Delete.DeleteArgs(instance, new SqlConnectionStringBuilder(args.ConnectionString));
+                var deleteArgs = new SIM.Pipelines.Delete.DeleteArgs(instance,
+                    new SqlConnectionStringBuilder(args.ConnectionString));
                 IPipelineController controller = new ConsoleController();
 
-                PipelineManager.Initialize();
+                PipelineManager.Initialize(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                    PipelineManager.PipelinesConfigFilePath));
 
                 PipelineManager.StartPipeline(
                     "delete",

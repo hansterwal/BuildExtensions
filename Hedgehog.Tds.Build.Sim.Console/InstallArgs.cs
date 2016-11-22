@@ -1,13 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Hedgehog.Tds.Build.Sim.Console
 {
     public class InstallArgs : BaseArgsProcessor
     {
+        public InstallArgs(IEnumerable<string> args) : base(args)
+        {
+        }
+
+        public string HostName
+        {
+            get { return GetArg("HostName"); }
+        }
+
         public string InstanceName
         {
             get { return GetArg("InstanceName"); }
@@ -46,10 +51,6 @@ namespace Hedgehog.Tds.Build.Sim.Console
         public string Modules
         {
             get { return GetArg("Modules"); }
-        }
-
-        public InstallArgs(IEnumerable<string> args) : base(args)
-        {
         }
     }
 }

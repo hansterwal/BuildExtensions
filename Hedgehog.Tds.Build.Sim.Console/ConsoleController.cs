@@ -15,7 +15,21 @@ namespace Hedgehog.Tds.Build.Sim.Console
         public void Start(string replaceHere, List<Step> steps)
         {
             System.Console.WriteLine("SIM: Operation Started : " + replaceHere);
+            foreach (var step in steps)
+            {
+                System.Console.WriteLine("step: " + step.ArgsName);
+                var builder = new StringBuilder();
+                foreach (var processor in step.Processors)
+                {
+                    builder.AppendLine("processor:" + processor.Title );
+                }
+                System.Console.WriteLine(builder.ToString());
 
+            }
+        }
+
+        public void SetProgress(long progress)
+        {
         }
 
         public void IncrementProgress(long progress)
@@ -69,23 +83,24 @@ namespace Hedgehog.Tds.Build.Sim.Console
 
         public string Ask(string title, string defaultValue)
         {
-            throw new NotImplementedException();
+            return defaultValue;
         }
 
         public bool Confirm(string message)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Resume()
         {
-            throw new NotImplementedException();
+            
         }
 
         public string Select(string message, IEnumerable<string> options, bool allowMultipleSelection,
             string defaultValue)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return defaultValue;
         }
 
         #endregion

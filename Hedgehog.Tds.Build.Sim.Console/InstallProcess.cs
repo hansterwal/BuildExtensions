@@ -65,7 +65,7 @@ namespace Hedgehog.Tds.Build.Sim.Console
                 }
 
                 SIM.Pipelines.Install.InstallArgs installArgs = new SIM.Pipelines.Install.InstallArgs(args.InstanceName,
-                    args.InstanceName,
+                    args.HostName,
                     product,
                     instanceRootDirectoryPath,
                     new SqlConnectionStringBuilder(args.ConnectionString),
@@ -78,15 +78,16 @@ namespace Hedgehog.Tds.Build.Sim.Console
                     modules);
 
                 IPipelineController controller = new ConsoleController();
-
+                
                 // Lets start installation
-                PipelineManager.Initialize();
+                PipelineManager.Initialize(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PipelineManager.PipelinesConfigFilePath));
                 PipelineManager.StartPipeline(
                     "install",
                     installArgs,
                     controller,
                     false);
 
+                
                 System.Console.WriteLine("SIM: Finished Install");
 
                 return true;

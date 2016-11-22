@@ -8,6 +8,10 @@ namespace Hedgehog.Tds.Build.Sim.Console
 {
     public class DeleteArgs : BaseArgsProcessor
     {
+        public string HostName
+        {
+            get { return GetArg("HostName"); }
+        }
         public string InstanceName
         {
             get { return GetArg("InstanceName"); }
