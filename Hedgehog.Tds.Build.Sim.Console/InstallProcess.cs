@@ -54,12 +54,20 @@ namespace Hedgehog.Tds.Build.Sim.Console
                     {
                         string modulePath = args.RepoDirectory + "\\" + moduleName;
                         Product module;
-                        Product.TryParse(modulePath, out module);
-
-                        if (module != null)
+                        var isModule = Product.TryParse(modulePath, out module);
+                        if (!isModule)
                         {
-                            modules.Add(module);
+                            System.Console.WriteLine("SIM: Warning! Can't detect Sitecore-based module in {0} file", moduleName);
+
                         }
+                        else
+                        {
+                            if (module != null)
+                            {
+                                modules.Add(module);
+                            }
+                        }
+                        
                     }
 
                 }
